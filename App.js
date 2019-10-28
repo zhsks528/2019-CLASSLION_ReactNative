@@ -24,6 +24,11 @@ export default class App extends React.Component {
           newTodo[index].iscomplete = !newTodo[index].iscomplete;
           this.setState({ todos: newTodo });
         }}
+        deleteItem={() => {
+          const newTodo = [...this.state.todos];
+          newTodo.splice(index, 1);
+          this.setState({ todos: newTodo });
+        }}
       />
     );
   };
