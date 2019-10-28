@@ -8,12 +8,16 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function Listitem({ name }) {
+export default function Listitem({ name, isComplete, changeComlete }) {
   return (
     <View style={styles.listitembox}>
       <View style={styles.makerow}>
-        <TouchableOpacity>
-          <AntDesign name="checkcircle" size={20} style={styles.checkmargin} />
+        <TouchableOpacity onPress={changeComlete}>
+          <AntDesign
+            name={isComplete ? "checkcircle" : "frowno"}
+            size={20}
+            style={styles.checkmargin}
+          />
         </TouchableOpacity>
         <Text style={styles.item}>{name}</Text>
       </View>

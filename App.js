@@ -10,19 +10,22 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       inputValue: "",
-      todos: [
-        {
-          title: "나는 공부를 하지않아"
-        },
-        {
-          title: "일찍 일어날래"
-        }
-      ]
+      todos: []
     };
   }
 
   _makeTodoTitem = ({ item, index }) => {
-    return <Listitem name={item.title} />;
+    return (
+      <Listitem
+        name={item.title}
+        isComplete={item.iscomplete}
+        changeComlete={() => {
+          const newTodo = [...this.state.todos];
+          newTodo[index].iscomplete = !newTodo[index].iscomplete;
+          this.setState({ todos: newTodo });
+        }}
+      />
+    );
   };
 
   _changeText = value => {
@@ -33,7 +36,7 @@ export default class App extends React.Component {
     if (this.state.inputValue !== "") {
       const prevTodo = this.state.todos;
 
-      const newTodo = { title: this.state.inputValue };
+      const newTodo = { title: this.state.inputValue, iscomplete: false };
 
       this.setState({
         inputValue: "",
