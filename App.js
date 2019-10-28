@@ -1,12 +1,21 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Header from "./app/components/Header";
+import Subtitle from "./app/components/Subtitle";
+import Input from "./app/components/Input";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.headercenter}>
         <Header />
+      </View>
+      <View style={styles.subtitleposi}>
+        <Subtitle title="해야 할 일" />
+        <Input />
+      </View>
+      <View style={styles.subtitleposi}>
+        <Subtitle title="해야 할 일 목록" />
       </View>
     </View>
   );
@@ -18,7 +27,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   headercenter: {
-    alignItems: "center",
-    borderWidth: 5
+    alignItems: "center"
+  },
+  subtitleposi: {
+    marginLeft: 50
   }
 });
