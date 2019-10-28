@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+export default function Header() {
   return (
     <View style={styles.headercontainer}>
       <Text style={styles.headertext}>MyTodoApp</Text>
