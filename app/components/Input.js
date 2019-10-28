@@ -1,9 +1,12 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-export default function Subtitle() {
+export default function Input({ value, changeText, addTodoItem }) {
   return (
     <TextInput
+      value={value}
+      onChangeText={changeText}
+      onEndEditing={addTodoItem}
       styles={styles.input}
       placeholder={"해야할 일을 입력해주세요"}
       maxLength={30}
