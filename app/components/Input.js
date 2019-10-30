@@ -7,7 +7,7 @@ export default function Input({ value, changeText, addTodoItem }) {
       value={value}
       onChangeText={changeText}
       onEndEditing={addTodoItem}
-      styles={styles.input}
+      style={styles.input}
       placeholder={"해야할 일을 입력해주세요"}
       maxLength={30}
       returnKeyType="done"

@@ -8,7 +8,12 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function Listitem({ name, isComplete, changeComlete }) {
+export default function Listitem({
+  name,
+  isComplete,
+  changeComlete,
+  deleteItem
+}) {
   return (
     <View style={styles.listitembox}>
       <View style={styles.makerow}>
@@ -21,7 +26,7 @@ export default function Listitem({ name, isComplete, changeComlete }) {
         </TouchableOpacity>
         <Text style={styles.item}>{name}</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={deleteItem}>
         <AntDesign name="close" size={20} />
       </TouchableOpacity>
     </View>
