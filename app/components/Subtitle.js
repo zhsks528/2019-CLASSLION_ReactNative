@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
   subtitletext: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#3f4e66"
+    color: "white"
   }
 });
