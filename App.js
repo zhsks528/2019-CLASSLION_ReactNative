@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, AsyncStorage } from "react-native";
 import Header from "./app/components/Header";
 import Subtitle from "./app/components/Subtitle";
 import Input from "./app/components/Input";
@@ -13,6 +13,21 @@ export default class App extends React.Component {
       todos: []
     };
   }
+  componentWillMount() {
+    this.getData();
+  }
+
+  storeData = () => {
+    AsyncStorage.setItem("@todo:state", JSON.stringify(this.state));
+  };
+
+  getData = () => {
+    AsyncStorage.getItem("@todo:state").then(state => {
+      if (state != null) {
+        this.setState(JSON.parse(state));
+      }
+    });
+  };
 
   _makeTodoTitem = ({ item, index }) => {
     return (
@@ -22,12 +37,12 @@ export default class App extends React.Component {
         changeComlete={() => {
           const newTodo = [...this.state.todos];
           newTodo[index].iscomplete = !newTodo[index].iscomplete;
-          this.setState({ todos: newTodo });
+          this.setState({ todos: newTodo }, this.storeData);
         }}
         deleteItem={() => {
           const newTodo = [...this.state.todos];
           newTodo.splice(index, 1);
-          this.setState({ todos: newTodo });
+          this.setState({ todos: newTodo }, this.storeData);
         }}
       />
     );
@@ -83,12 +98,14 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#2196f3"
   },
   headercenter: {
-    alignItems: "center"
+    alignItems: "center",
+    borderBottomWidth: 2,
+    borderBottomColor: "white"
   },
   subtitleposi: {
-    marginLeft: 50
+    padding: 20
   }
 });
